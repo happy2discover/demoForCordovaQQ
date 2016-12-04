@@ -64,13 +64,8 @@ var app = function () {
         function writeFile(fileEntry, dataObj) {
           fileEntry.createWriter(function (fileWriter) {
             fileWriter.onwriteend = function() {
-
-              info.img = fileEntry.toURL();
-              info.img = info.img.slice(7, info.img.length);
-
-              appintance.localImageUrl = info.img;
-
-              console.log(info.img);
+              appintance.localImageUrl = fileEntry.toURL().split("://")[1];
+              console.log(appintance.localImageUrl);
             };
 
             fileWriter.onerror = function (e) {
